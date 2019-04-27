@@ -8,6 +8,8 @@ Following things were added in this Boilerplate to vanilla Node :
 * **ESLint with Airbnb code style guide** - We need it in order to keep our code style consistent. This is our Static code analysis tool of choice.
 * **Nodemon** - This tool watches for file changes and automatically reloads our app when change occures.
 * **Docker and docker-compose** - Docker allows us to run our app and database (MongoDB) isolated in containers.
+* **Morgan** - HTTP Request logger
+* **Dotenv** - Module that parses environment variables from `.env` file and injects them into app
 
 ### How to run with docker ?
 
