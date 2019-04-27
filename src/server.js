@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 require('dotenv').config();
 
-const { authRoutes, movieRoutes } = require('./route-controllers');
+const { authRoutes, movieRoutes } = require('./routes');
 
 const app = express();
 const port = 3000 || process.env.APP_PORT;
