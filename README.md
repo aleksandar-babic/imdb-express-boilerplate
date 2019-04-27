@@ -14,11 +14,14 @@ Following things were added in this Boilerplate to vanilla Node :
 ### How to run with docker ?
 
 ```bash
+# Create .env file
+cp src/.env.example src/.env
+
 # This command will build our containers and start both app and db
 docker-compose up
 
 # Test app with curl
-curl http://localhost:3000/health-check
+curl http://localhost:3000/movies
 ```
 
 ### How to run this on host machine without docker ?
@@ -27,10 +30,13 @@ curl http://localhost:3000/health-check
 # This will install our node dependencies
 yarn
 
+# Create .env file
+cp src/.env.example src/.env
+
 # This will start our app
 Yarn dev
 
 # Test app with curl
-curl http://localhost:3000/health-check
+curl http://localhost:3000/movies
 ```
 > If you are using this method to start app you will have to install MongoDB locally on machine before starting the app.
