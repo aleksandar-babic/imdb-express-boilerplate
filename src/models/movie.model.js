@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
-// Todo
+  title: String,
+  description: String,
+  imageUrl: String,
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
