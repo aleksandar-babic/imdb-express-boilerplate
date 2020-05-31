@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express'
 
 const router = express.Router();
 
-const {
+import {
   me, register, login, logout, refresh,
-} = require('./../services/user.service');
+} from './../services/user.service';
 
 router.get('/auth/me', (req, res) => res.json(me(req.user)));
 router.post('/auth/register', (req, res) => register(req.body)
@@ -16,4 +16,4 @@ router.post('/auth/login', (req, res) => login(req.body)
 router.post('/auth/logout', (req, res) => res.json(logout()));
 router.post('/auth/refresh', (req, res) => res.json(refresh()));
 
-module.exports = router;
+export default router;

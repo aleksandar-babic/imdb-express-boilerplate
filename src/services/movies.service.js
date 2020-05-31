@@ -1,28 +1,39 @@
-const { Movie } = require('./../models');
+import { Movie } from './../models'
 
 const index = async () => {
-  const movies = await Movie.find().exec();
+  const movies = await Movie.find();
 
   return movies;
 };
 
-const show = () => {
-  // Todo
+const show = async ({id}) => {
+  var movie = await Movie.findById(id);
+
+  return movie;
 };
 
-const store = () => {
-  // Todo
+const store = async ({title, description, imageUrl}) => {
+  if (!title || !description || !imageUrl) {
+    return { err: 'Movie data error' };
+  }
+
+  var movie = new Movie({title: title, description: description, imageUrl: imageUrl});
+  var movie = await movie.save();
+
+  return movie;
 };
 
 const update = () => {
   // Todo
 };
 
-const destroy = () => {
-  // Todo
+const destroy = async ({id}) => {
+  var movie = await Movie.findByIdAndRemove(id);
+
+  return movie;
 };
 
-module.exports = {
+export {
   index,
   show,
   store,

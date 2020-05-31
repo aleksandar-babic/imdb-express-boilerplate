@@ -1,7 +1,7 @@
-const authRoutes = require('./auth.routes');
-const movieRoutes = require('./movies.routes');
+import authRoutes from './auth.routes'
+import movieRoutes from './movies.routes'
 
-module.exports = {
+export {
   authRoutes,
   movieRoutes,
 };

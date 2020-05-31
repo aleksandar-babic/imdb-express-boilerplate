@@ -1,26 +1,21 @@
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
-const expressJwt = require('express-jwt');
+import express from 'express'
+import morgan from 'morgan'
+import bodyParser from 'body-parser'
+import expressJwt from 'express-jwt'
 
-const envPath = path.resolve(process.cwd(), 'src', '.env');
-require('dotenv').config({
-  path: envPath,
-});
-
-const { authRoutes, movieRoutes } = require('./routes');
-const db = require('./database');
+import config from './config'
+import { authRoutes, movieRoutes } from './routes'
+import db from './database'
 
 const app = express();
-const port = 3000 || process.env.APP_PORT;
+const port = config.appPort;
 
 app.use(morgan('combined'));
 
 app.use(bodyParser.json());
 
 const jwtAuth = expressJwt({
-  secret: process.env.JWT_SECRET,
+  secret: config.jwtSecret,
 }).unless({ path: ['/auth/register', '/auth/login'] });
 
 app.use(jwtAuth);
