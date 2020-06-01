@@ -1,6 +1,8 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken'
 
-const { User } = require('./../models');
+import { User } from './../models'
+
+import config from '../config'
 
 const me = token => token.user;
 
@@ -27,10 +29,10 @@ const login = ({ email, password }) => new Promise(async (resolve, reject) => {
   try {
     await user.comparePassword(password);
 
-    const token = jwt.sign({ user }, process.env.JWT_SECRET,
+    const token = jwt.sign({ user }, config.jwtSecret,
       {
       // eslint-disable-next-line radix
-        expiresIn: parseInt(process.env.JWT_EXPIRE),
+        expiresIn: parseInt(config.jwtExpire),
       });
 
     resolve({
@@ -50,6 +52,6 @@ const refresh = () => {
   // Todo
 };
 
-module.exports = {
+export {
   me, register, login, logout, refresh,
 };
